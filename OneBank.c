@@ -324,9 +324,6 @@ void AccountBalance()
     float totalIncome = calculateTotal("income.txt");
     float totalExpense = calculateTotal("expense.txt");
     float totalAll = totalIncome - totalExpense;
-    printf("Total Income: %.2f\n", totalIncome);
-    printf("Total Expense: %.2f\n", totalExpense);
-    printf("Total All: %.2f\n", totalAll);
 
     do
     {
@@ -454,18 +451,40 @@ void Menu()
 
 int main()
 {
-    Register();
+    int choice;
+    printf("--- Welcome to One Bank ---\n");
+    printf("1.Register\n");
+    printf("2.Log in\n");
+    scanf("%d",&choice);
 
     // Log in
-    int loginResult = Login();
+    if(choice == 1)
+    {
+        Register();
+        int loginResult = Login();
 
-    if (loginResult == 1) {
+        if (loginResult == 1) {
         // Further actions after successful login
         printf("Welcome!\n");
         Menu();
-    } else {
+        }
+        else {
         // Handle unsuccessful login
         printf("Exiting program...\n");
+    }
+    }
+    if(choice == 2)
+    {
+        int loginResult = Login();
+
+        if (loginResult == 1) {
+        // Further actions after successful login
+        printf("Welcome!\n");
+        Menu();
+        } else {
+        // Handle unsuccessful login
+        printf("Exiting program...\n");
+    }
     }
     return 0;
 }
